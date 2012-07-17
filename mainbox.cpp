@@ -53,14 +53,14 @@ void MainBox::on_actionFileOpen_triggered() {
 	// we get the count of levels, and then grab the image from the topmost
 	// level
 	int32_t level_count;
-	level_count = openslide_get_level_count(osr);
+	level_count = openslide_get_layer_count(osr);
 
 	statusBar()->showMessage(tr("Level count ") +
 		QString::number(level_count));
 
 	// get top level's dimensions
 	int64_t w, h;
-	openslide_get_level_dimensions(osr, level_count - 1, &w, &h);
+	openslide_get_layer_dimensions(osr, level_count - 1, &w, &h);
 
 	statusBar()->showMessage(tr("Top level dimensions: ") +
 		QString::number(w) + " by " + QString::number(h));
